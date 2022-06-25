@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+<div style="color: rgb(41, 41, 41);" class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h4  class="card-title text-center">
+                    Login
+                </h4>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {{form|crispy}}
+                    <button type="submit" class="botao btn btn-primary btn-block"> Entrar </button>
+                    <a class="botao btn btn-primary btn-block" href="/accounts/register">Cadastrar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="offset-1 col-10 list-div">
+    <h2 style="color: rgb(255, 217, 0);">{{review.title}}</h2>
+    <br>
+    <p>{{review.content}}</p>
+    <br>
+    <span>Nota final: <span class="font-weight-bold">{{review.rating}}</span></span>
+    <p class="font-weight-bold">Review de <a href="/reviews?q={{review.media.name}}">{{review.media.name}}</a>. Por <a href="/reviews?q={{review.author}}">{{review.author}}</a>, em {{review.created_at}}</p>
+    <br>
+    {% for tag in review.tags.all %}
+    <a href="/reviews/?q={{tag}}">
+        <span class="badge badge-warning">{{tag}}</span>
+      </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
